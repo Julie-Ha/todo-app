@@ -63,7 +63,7 @@
             class="form-checkbox border-1 border-teal-500 focus:shadow-none h-6 w-6 text-teal-500"
           />
 
-          <p class="m-2">{{ todo.name }}</p>
+          <input class="m-2" type="text" v-model="todo.name"/>
           <button class="focus:outline-none ml-auto" @click="remove(index)">
             <svg
               class="h-6 w-6 text-teal-500 hover:text-teal-400"
