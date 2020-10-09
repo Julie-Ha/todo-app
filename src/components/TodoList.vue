@@ -63,7 +63,7 @@
             class="form-checkbox border-1 border-teal-500 focus:shadow-none h-6 w-6 text-teal-500"
           />
 
-          <input class="m-2" type="text" v-model="todo.name"/>
+          <input class="m-2" type="text" v-model="todo.name" />
           <button class="focus:outline-none ml-auto" @click="remove(index)">
             <svg
               class="h-6 w-6 text-teal-500 hover:text-teal-400"
@@ -80,7 +80,7 @@
           </button>
         </li>
       </ul>
-      <p class="text-gray-700">Tâches restantes: {{countTodos}} </p>
+      <p class="text-gray-700">Tâches restantes: {{ countTodos }}</p>
     </div>
   </div>
 </template>
@@ -97,8 +97,10 @@ export default {
   },
   methods: {
     add() {
-      this.listTodos.push({ name: this.newTodo, completed: false });
-      this.newTodo = "";
+      if (this.newTodo) {
+        this.listTodos.push({ name: this.newTodo, completed: false });
+        this.newTodo = "";
+      }
     },
     remove(index) {
       this.listTodos.splice(index, 1);

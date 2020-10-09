@@ -1,14 +1,14 @@
 <template>
-    <TodoList />
+    <Home />
 </template>
 
 <script>
-import TodoList from './components/TodoList.vue';
+import Home from './components/Home.vue';
 
 export default {
   name: 'App',
   components: {
-    TodoList
+    Home
   }
 }
 </script>
