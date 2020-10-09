@@ -1,13 +1,34 @@
 <template>
-    <nav class="flex flex-col w-48 p-4 bg-teal-500">
-        <button class="text-white">List1</button>
-        <button class="text-white">List2</button>
-    </nav>
+  <nav class="flex flex-col w-48 p-4 bg-teal-500">
+
+      <ul>
+        <li
+          class="flex items-center p-2"
+          v-for="list in lists"
+          :key="list.id"
+        >
+        <button class="text-white">List{{list.id}}</button>
+        </li>
+      </ul>
+
+    <router-link to="/"><p class="text-white">Home</p></router-link>
+    <router-link to="/login"><p class="text-white">Login</p></router-link>
+  </nav>
 </template>
 
 <script>
+import { store } from "../store";
 
 export default {
-  name: "SideBar.vue"
+  name: "SideBar.vue",
+  store,
+  data() {
+    return {
+      lists: store.state.lists,
+    };
+  },
+  methods: {
+
+  }
 };
 </script>

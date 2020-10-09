@@ -86,11 +86,15 @@
 </template>
 
 <script>
+import {store} from "../store";
+
 export default {
   name: "TodoList.vue",
+  store,
+  props: ['ListId'],
   data() {
     return {
-      listTodos: [],
+      listTodos: store.state.lists[0].todos,
       newTodo: "",
       filter: "all",
     };

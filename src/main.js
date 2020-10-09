@@ -1,18 +1,13 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import "./assets/styles/index.css";
-import { createStore } from 'vuex';
-import 'es6-promise/auto';
+import "es6-promise/auto";
+import {store} from "./store";
+import {router} from "./router";
 
 const app = createApp(App);
-const store = createStore({
-    state () {
-      return {
-        count: 1
-      }
-    }
-  });
 
+app.use(router);
 app.use(store);
 
 app.mount("#app");

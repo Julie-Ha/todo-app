@@ -1,14 +1,23 @@
 <template>
-    <Home />
+  <div class="home flex mb-4">
+    <SideBar />
+    <router-view />
+  </div>
 </template>
 
 <script>
-import Home from './components/Home.vue';
+import SideBar from "./components/SideBar";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Home
-  }
-}
+    SideBar,
+  },
+};
 </script>
+
+<style scoped>
+.home {
+    height: 100vh;
+}
+</style>
