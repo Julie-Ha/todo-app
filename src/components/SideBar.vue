@@ -7,7 +7,7 @@
           v-for="list in lists"
           :key="list.id"
         >
-        <button class="text-white">List{{list.id}}</button>
+        <button @click="updateListId(list.id)" class="text-white">List{{list.id}}</button>
         </li>
       </ul>
 
@@ -28,7 +28,9 @@ export default {
     };
   },
   methods: {
-
+    updateListId(id) {
+      this.$emit('change-list-id', id);
+    },
   }
 };
 </script>

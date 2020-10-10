@@ -91,16 +91,19 @@ import {store} from "../store";
 export default {
   name: "TodoList.vue",
   store,
-  props: ['ListId'],
   data() {
     return {
-      listTodos: store.state.lists[0].todos,
       newTodo: "",
       filter: "all",
+      listId: this.$parent.listId,
+      listTodos: store.state.lists[this.$parent.listId-1].todos,
     };
   },
   methods: {
     add() {
+      this.listId = this.$parent.listId-1;
+      this.listTodos = store.state.lists[this.$parent.listId-1].todos;
+
       if (this.newTodo) {
         this.listTodos.push({ name: this.newTodo, completed: false });
         this.newTodo = "";
@@ -112,11 +115,13 @@ export default {
   },
   computed: {
     filterTodos() {
+      let listTodos = store.state.lists[this.$parent.listId-1].todos;
+
       if (this.filter === "completed")
-        return this.listTodos.filter((todo) => todo.completed);
+        return listTodos.filter((todo) => todo.completed);
       else if (this.filter === "notCompleted")
-        return this.listTodos.filter((todo) => !todo.completed);
-      else return this.listTodos;
+        return listTodos.filter((todo) => !todo.completed);
+      else return listTodos;
     },
     countTodos() {
       return this.listTodos.filter((todo) => !todo.completed).length;
