@@ -1,35 +1,24 @@
 <template>
-  <div class="home flex">
-    <SideBar v-on:change-list-id="changeListId($event)" />
-    <TodoList />
+  <div class="app">
+    <NavBar />
+    
   </div>
+  <router-view></router-view>
 </template>
 
 <script>
-import SideBar from "./components/SideBar";
-import TodoList from "./components/TodoList";
+import NavBar from "./components/NavBar";
 
 export default {
   name: "App",
   components: {
-    SideBar,
-    TodoList
-  },
-  data() {
-    return {
-      listId: 1,
-    };
-  },
-  methods: {
-    changeListId(id) {
-      this.listId = id;
-    }
-  } 
+    NavBar,
+  }
 };
 </script>
 
 <style scoped>
-.home {
+.app {
   height: 100vh;
 }
 </style>

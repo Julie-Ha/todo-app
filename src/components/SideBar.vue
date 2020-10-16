@@ -10,9 +10,6 @@
         <button @click="updateListId(list.id)" class="text-white">List{{list.id}}</button>
         </li>
       </ul>
-
-    <router-link to="/"><p class="text-white">Home</p></router-link>
-    <router-link to="/login"><p class="text-white">Login</p></router-link>
   </nav>
 </template>
 
