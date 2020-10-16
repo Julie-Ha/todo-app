@@ -3,12 +3,12 @@
     <SideBar v-on:change-list-id="changeListId($event)" />
     <TodoList />
   </div>
-  <router-view></router-view>
+  
 </template>
 
 <script>
-import SideBar from "./components/SideBar";
-import TodoList from "./components/TodoList";
+import SideBar from "./SideBar";
+import TodoList from "./TodoList";
 
 export default {
   name: "TodoListApp",

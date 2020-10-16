@@ -37,7 +37,7 @@ export default {
         .then(function(response) {
           let token = response.data.token;
           store.state.token = token;
-          router.push("/");
+          router.push("/todos");
         })
         .catch(function(error) {
           console.log(error);
