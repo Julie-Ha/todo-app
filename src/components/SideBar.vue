@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex flex-col w-48 p-4 bg-teal-500">
+  <nav class="flex flex-col w-48 p-4 bg-teal-400">
 
       <ul>
         <li

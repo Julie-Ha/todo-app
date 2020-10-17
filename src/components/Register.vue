@@ -1,74 +1,49 @@
 <template>
-  <div>
-    <form>
-      <h1>Register</h1>
-      <label>Username</label>
-      <input type="text" v-model="userName" />
-      <label>email</label>
-      <input type="email" v-model="email" />
-      <label>Password</label>
-      <input type="password" v-model="password" />
-      <input @click.prevent="send()" type="submit" value="Ok" />
-    </form>
-
-    <!-- <form class="w-full max-w-sm">
-      <div class="md:flex md:items-center mb-6">
-        <div class="md:w-1/3">
-          <label
-            class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-            for="inline-full-name"
-          >
-            Username
-          </label>
-        </div>
-        <div class="md:w-2/3">
-          <input
-            class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-            id="inline-full-name"
-            type="text"
-            value="Jane Doe"
-          />
-        </div>
-      </div>
-      <div class="md:flex md:items-center mb-6">
-        <div class="md:w-1/3">
-          <label
-            class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-            for="inline-password"
-          >
-            Password
-          </label>
-        </div>
-        <div class="md:w-2/3">
-          <input
-            class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-            id="inline-password"
-            type="password"
-            placeholder="******************"
-          />
-        </div>
-      </div>
-      <div class="md:flex md:items-center mb-6">
-        <div class="md:w-1/3"></div>
-        <label class="md:w-2/3 block text-gray-500 font-bold">
-          <input class="mr-2 leading-tight" type="checkbox" />
-          <span class="text-sm">
-            Send me your newsletter!
-          </span>
+  <div class="flex flex-col justify-center items-center mt-5 m-auto max-w-lg">
+    <form class="w-full">
+      <div class="mb-6">
+        <label class="block text-gray-500 font-bold mb-3" for="username">
+          Username
         </label>
+        <input
+          class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-teal-500"
+          id="username"
+          type="username"
+          v-model="username"
+        />
+      </div>
+      <div class="mb-6">
+        <label class="block text-gray-500 font-bold mb-3" for="email">
+          Email
+        </label>
+        <input
+          class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-teal-500"
+          id="email"
+          type="email"
+          v-model="email"
+        />
+      </div>
+      <div class="mb-6">
+        <label class="block text-gray-500 font-bold mb-3" for="password">
+          Password
+        </label>
+        <input
+          class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-teal-500"
+          id="password"
+          type="password"
+          v-model="password"
+        />
       </div>
       <div class="md:flex md:items-center">
-        <div class="md:w-1/3"></div>
-        <div class="md:w-2/3">
-          <button
-            class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-            type="button"
-          >
-            Sign Up
-          </button>
-        </div>
+        <button
+          class="shadow bg-teal-500 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+          type="submit"
+          @click.prevent="send()"
+        >
+          Register
+        </button>
       </div>
-    </form> -->
+    </form>
   </div>
 </template>
 
@@ -79,7 +54,7 @@ export default {
   name: "Register.vue",
   data() {
     return {
-      userName: "",
+      username: "",
       email: "",
       password: "",
     };
@@ -88,7 +63,7 @@ export default {
     send() {
       axios
         .post("http://138.68.74.39/api/register", {
-          name: this.userName,
+          name: this.username,
           email: this.email,
           password: this.password,
         })
