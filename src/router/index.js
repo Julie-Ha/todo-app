@@ -6,22 +6,22 @@ import TodoListApp from "../components/TodoListApp";
 
 const routes = [
   {
-    path: "/login",
+    path: "/todo-app/login",
     name: "Login",
     component: Login,
   },
   {
-    path: "/register",
+    path: "/todo-app/register",
     name: "Register",
     component: Register,
   },
   {
-    path: "/",
+    path: "/todo-app",
     name: "Home",
     component: Home,
   },
   {
-    path: "/todos",
+    path: "/todo-app/todos",
     name: "TodoListApp",
     component: TodoListApp,
   },
