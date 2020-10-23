@@ -18,6 +18,7 @@ export default {
   methods: {
     logout() {
       store.state.token = null;
+      localStorage.removeItem("token");
       return store.state.token;
     }
   },

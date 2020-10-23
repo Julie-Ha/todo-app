@@ -86,7 +86,8 @@
 </template>
 
 <script>
-import {store} from "../store";
+import { store } from "../store";
+import axios from "axios";
 
 export default {
   name: "TodoList.vue",
@@ -96,26 +97,42 @@ export default {
       newTodo: "",
       filter: "all",
       listId: this.$parent.listId,
-      listTodos: store.state.lists[this.$parent.listId-1].todos,
+      listTodos: store.state.lists[this.$parent.listId - 1].todos,
     };
   },
   methods: {
     add() {
-      this.listId = this.$parent.listId-1;
-      this.listTodos = store.state.lists[this.$parent.listId-1].todos;
+      // this.listId = this.$parent.listId-1;
+      // this.listTodos = store.state.lists[this.$parent.listId-1].todos;
 
-      if (this.newTodo) {
-        this.listTodos.push({ name: this.newTodo, completed: false });
-        this.newTodo = "";
-      }
+      // if (this.newTodo) {
+      //   this.listTodos.push({ name: this.newTodo, completed: false });
+      //   this.newTodo = "";
+      // }
+      let tokenStored = store.state.token;
+      axios
+        .get("http://138.68.74.39/api/todo", {
+          headers: {
+            Authorization: "Bearer " + tokenStored,
+          },
+        })
+        .then(function(response) {
+          store.state.lists = response.data;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     },
     remove(index) {
+      this.listId = this.$parent.listId - 1;
+      this.listTodos = store.state.lists[this.$parent.listId - 1].todos;
+
       this.listTodos.splice(index, 1);
     },
   },
   computed: {
     filterTodos() {
-      let listTodos = store.state.lists[this.$parent.listId-1].todos;
+      let listTodos = store.state.lists[this.$parent.listId - 1].todos;
 
       if (this.filter === "completed")
         return listTodos.filter((todo) => todo.completed);

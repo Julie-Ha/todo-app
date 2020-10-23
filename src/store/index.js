@@ -3,7 +3,7 @@ import { createStore } from 'vuex';
 export const store = createStore({
     state() {
       return {
-        token: "",
+        token: localStorage.getItem("token"),
         lists: [
           {
             id: 1,

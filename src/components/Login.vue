@@ -67,6 +67,7 @@ export default {
         .then(function(response) {
           let token = response.data.token;
           store.state.token = token;
+          localStorage.setItem("token", token);
           router.push("/todo-app/todos");
         })
         .catch(function(error) {
