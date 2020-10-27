@@ -1,7 +1,7 @@
 <template>
   <div class="home flex">
     <SideBar v-on:change-list-id="changeListId($event)" />
-    <TodoList />
+    <TodoList :id="listId" />
   </div>
   
 </template>

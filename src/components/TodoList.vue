@@ -92,18 +92,19 @@ import { store } from "../store";
 export default {
   name: "TodoList.vue",
   store,
+  props: ["listId"],
   data() {
     return {
       newTodo: "",
       filter: "all",
-      listId: this.$parent.listId,
-      listTodos: store.state.lists[this.$parent.listId - 1].todos,
+      // listId: this.$parent.listId,
+      listTodos: store.state.lists[0].todos,
     };
   },
   methods: {
     add() {
-      this.listId = this.$parent.listId-1;
-      this.listTodos = store.state.lists[this.$parent.listId-1].todos;
+      // this.listId = this.$parent.listId-1;
+      this.listTodos = store.state.lists[this.listId - 1].todos;
 
       if (this.newTodo) {
         this.listTodos.push({ name: this.newTodo, completed: false });
@@ -124,15 +125,16 @@ export default {
       //   });
     },
     remove(index) {
-      this.listId = this.$parent.listId - 1;
-      this.listTodos = store.state.lists[this.$parent.listId - 1].todos;
+      // this.listId = this.$parent.listId - 1;
+      this.listTodos = store.state.lists[this.listId - 1].todos;
 
       this.listTodos.splice(index, 1);
     },
   },
   computed: {
     filterTodos() {
-      let listTodos = store.state.lists[this.$parent.listId - 1].todos;
+      console.log(this.listId);
+      let listTodos = store.state.lists[0].todos;
 
       if (this.filter === "completed")
         return listTodos.filter((todo) => todo.completed);
