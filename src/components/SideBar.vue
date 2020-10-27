@@ -3,7 +3,7 @@
     <ul>
       <li class="flex items-center p-2" v-for="list in displayLists" :key="list.id">
         <button @click="updateListId(list.id)" class="text-white">
-          {{ list.name }}
+          Liste {{ list.id }}
         </button>
       </li>
     </ul>
@@ -22,7 +22,6 @@ export default {
   router,
   data() {
     return {
-      lists: [],
     };
   },
   methods: {
@@ -52,19 +51,19 @@ export default {
     },
   },
   beforeMount() {
-    let tokenStored = store.state.token;
-    axios
-      .get("http://138.68.74.39/api/todolists", {
-        headers: {
-          Authorization: "Bearer " + tokenStored,
-        },
-      })
-      .then(function(response) {
-        store.state.lists = response.data;
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+    // let tokenStored = store.state.token;
+    // axios
+    //   .get("http://138.68.74.39/api/todolists", {
+    //     headers: {
+    //       Authorization: "Bearer " + tokenStored,
+    //     },
+    //   })
+    //   .then(function(response) {
+    //     store.state.lists = response.data;
+    //   })
+    //   .catch(function(error) {
+    //     console.log(error);
+    //   });
   },
   computed : {
     displayLists() {

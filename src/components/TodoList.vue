@@ -87,7 +87,7 @@
 
 <script>
 import { store } from "../store";
-import axios from "axios";
+// import axios from "axios";
 
 export default {
   name: "TodoList.vue",
@@ -102,26 +102,26 @@ export default {
   },
   methods: {
     add() {
-      // this.listId = this.$parent.listId-1;
-      // this.listTodos = store.state.lists[this.$parent.listId-1].todos;
+      this.listId = this.$parent.listId-1;
+      this.listTodos = store.state.lists[this.$parent.listId-1].todos;
 
-      // if (this.newTodo) {
-      //   this.listTodos.push({ name: this.newTodo, completed: false });
-      //   this.newTodo = "";
-      // }
-      let tokenStored = store.state.token;
-      axios
-        .get("http://138.68.74.39/api/todo", {
-          headers: {
-            Authorization: "Bearer " + tokenStored,
-          },
-        })
-        .then(function(response) {
-          store.state.lists = response.data;
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
+      if (this.newTodo) {
+        this.listTodos.push({ name: this.newTodo, completed: false });
+        this.newTodo = "";
+      }
+      // let tokenStored = store.state.token;
+      // axios
+      //   .get("http://138.68.74.39/api/todo", {
+      //     headers: {
+      //       Authorization: "Bearer " + tokenStored,
+      //     },
+      //   })
+      //   .then(function(response) {
+      //     store.state.lists = response.data;
+      //   })
+      //   .catch(function(error) {
+      //     console.log(error);
+      //   });
     },
     remove(index) {
       this.listId = this.$parent.listId - 1;
